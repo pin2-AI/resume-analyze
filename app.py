@@ -8,15 +8,19 @@ if 'results' not in st.session_state:
     st.session_state.results=None
 
 uploaded_file=st.file_uploader("Upload Resume",type=['pdf','docx'])
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_DIR = os.path.join(BASE_DIR, 'data', 'uploads')
+RESULT_DIR=os.path.join(BASE_DIR, 'data', 'results')
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(RESULT_DIR, exist_ok=True)
 if uploaded_file:
-    uploaded_path= os.path.join('data/uploads',uploaded_file.name)
+    uploaded_path= os.path.join(UPLOAD_DIR,uploaded_file.name)
     with open(uploaded_path,'wb') as f:
         f.write(uploaded_file.getbuffer())
     if st.button('Analyze'):
         results=analyze_resume(uploaded_path)
         st.session_state.results=results
-        with open(f'data/results/{uploaded_file.name}_analysis.json','w') as f:
+        with open(f'{RESULT_DIR}/{uploaded_file.name}_analysis.json','w') as f:
             json.dump(results,f)
 
 
