@@ -2,8 +2,7 @@ import streamlit as st
 import os
 import json
 from resume_processor import analyze_resume
-from dotenv import load_dotenv
-load_dotenv()
+
 if 'results' not in st.session_state:
     st.session_state.results=None
 
