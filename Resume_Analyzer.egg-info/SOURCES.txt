@@ -1,0 +1,7 @@
+LICENSE
+README.md
+setup.py
+Resume_Analyzer.egg-info/PKG-INFO
+Resume_Analyzer.egg-info/SOURCES.txt
+Resume_Analyzer.egg-info/dependency_links.txt
+Resume_Analyzer.egg-info/top_level.txt
